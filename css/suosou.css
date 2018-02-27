@@ -1,0 +1,59 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+}
+.mui-content{
+	background-color: #FFFFFF !important;
+}
+.box1{
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.suosou_01{
+	background-color: #FFFFFF !important;
+	border: solid 1px #929292 !important;
+}
+.box{
+	height: 82vh;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+.box2{
+	font-size: 16px;
+	color: black;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.box2_01{
+	margin-bottom: 10px;
+}
+.box2_02 span{
+	display: inline-block;
+	font-size: 18px;
+	color: #C9C9C9;
+	border: solid 1px #C9C9C9;
+	padding: 4px 10px 4px 10px;
+	border-radius: 5px;
+	margin: 3px;
+}
+.box3{
+	font-size: 16px;
+	color: black;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+.box3_01{
+	margin-bottom: 10px;
+}
+.box3_02 span{
+	display: inline-block;
+	font-size: 18px;
+	color: #C9C9C9;
+	border: solid 1px #C9C9C9;
+	padding: 4px 10px 4px 10px;
+	border-radius: 5px;
+	margin: 5px 3px;
+}

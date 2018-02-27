@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<title>搜索</title>
+		<link rel="stylesheet" type="text/css" href="css/SearchInput.css"/>
+		<link rel="stylesheet" href="css/mui.min.css"/>
+		<script src="js/jquery-1.12.0.js"></script>
+		<script src="js/angular.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".ul_li_01 li").eq(0).find("span").css({"border-bottom":"solid 2px red","color":"red"});
+				$(".ul_li_01 li").on("click",function(){
+					$(this).find("span").css({"border-bottom":"solid 2px red","color":"red"});
+					$(this).siblings().find("span").css({"border-bottom":"","color":""});
+				})
+				$(".fs").on("click",function(){
+					window.history.go(-1);
+				})
+				$(".div_01").on("click",function(){
+					$(window).attr("location","xiangqing.html");
+				})
+			})
+			var app = angular.module("myapp",[]);
+			app.controller("mycont",function($scope,$http){
+				$http.get("js/shuju.json").success(function(res1){
+					$scope.name = res1;
+				})
+				$scope.reverse = false;
+			})
+		</script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left fs"></a>
+		    <input placeholder="防晒" class="input_01" />
+		</header>
+		<div class="mui-content" ng-controller="mycont">
+		    <div class="ul_li">
+		    	<ul class="ul_li_01">
+		    		<li><span>人气</span></li>
+		    		<li><span>销量</span></li>
+		    		<li ng-click="pa='span1';reverse=!reverse"><span>价格</span></li>
+		    		<li><span>价格区间</span></li>
+		    	</ul>
+		    </div>
+		    <div class="box">
+		    	<div class="box_01">
+		    		<div class="div_01" ng-repeat="ite in name | orderBy:pa:reverse">
+		    			<div class="img_01"><img ng-src="{{ite.img1}}"/></div>
+		    			<p class="p_zt">{{ite.p1}}</p>
+		    			<p class="dier_p">￥<span style="font-size: 20px;">{{ite.span1}}</span><span style="color: #999999;text-decoration: line-through;">{{ite.span2}}</span></p>
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
+	</body>
+</html>

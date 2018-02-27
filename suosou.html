@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<title></title>
+		<link rel="stylesheet" href="css/mui.css"/>
+		<link rel="stylesheet" href="css/suosou.css"/>
+		<script src="js/mui.js"></script>
+		<script src="js/jquery-1.12.0.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				function createxhr(){
+					if(window.XMLHttpRequest){
+						return new XMLHttpRequest();
+					}
+					return new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				var box3_02 = document.querySelector(".box3_02");
+				var xhr = createxhr();
+				xhr.open("GET","js/suosou.json",true);
+				xhr.send(null);
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var res = JSON.parse(xhr.responseText);
+						for(var i=0;i<res.length;i++){
+							var sp = document.createElement("span");
+							box3_02.appendChild(sp);
+							sp.innerHTML = res[i].span1;
+						}
+					}
+				}
+			}
+			$(function(){
+				$(".shanchu").on("click",function(){
+					$(".box2_02 span").remove();
+				})
+				
+				$(".suosou_01").on("blur",function(){
+					if($(".suosou_01").val()==""){
+						$(".box2_02").append("");
+					}else{
+						$(".box2_02").append('<span>'+$(".suosou_01").val()+'</span>');
+					}
+					
+				})
+				$(".jianto").on("click",function(){
+					$(window).history.go(-1);
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left jianto"></a>
+		    <h1 class="mui-title">搜索</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="mui-input-row  mui-search box1">
+			    <input type="search" class="mui-input-clear suosou_01" placeholder="">
+			</div>
+			<div class="box">
+			<div class="box2">
+				<div class="box2_01">
+					<span class="mui-icon mui-icon-search"></span>
+					<span style="margin-left: 5px;">最近搜索</span>
+					<span class="mui-icon mui-icon-trash shanchu" style="float: right;"></span>
+				</div>
+				<div class="box2_02">
+					<span>防晒</span>
+					<span>清洁</span>
+				</div>
+			</div>
+			<div class="box3">
+				<div class="box3_01">
+					<span class="mui-icon mui-icon-star"></span>
+					<span style="margin-left: 5px;">热门搜索</span>
+				</div>
+				<div class="box3_02">
+					<!--<span>防晒</span>
+					<span>清洁</span>
+					<span>防晒 清洁</span>-->
+				</div>
+			</div>
+		    </div>
+		</div>
+	</body>
+</html>
